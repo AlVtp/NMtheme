@@ -8,7 +8,19 @@
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 <div id="wrapper" class="hfeed">
-<header id="header" role="banner">
+<header id="header" class="header">
+	<div class="navbar">
+	<div class="logo">
+	<a href="http://nathalie-mota.local/" aria-label="Page d'accueil de Nathalie Mota">
+				<img src="/Logo.png" alt="Logo Nathalie Mota">
+
+    <div class="menu">
+        <a href="#">ACCUEIL</a>
+        <a href="#">À PROPOS</a>
+        <a href="#">CONTACT</a>
+    </div>
+	</div>
+	</div>
 <div id="branding">
 <div id="site-title" itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
 <?php
@@ -19,10 +31,12 @@ if ( is_front_page() || is_home() || is_front_page() && is_home() ) { echo '</h1
 </div>
 <div id="site-description"<?php if ( !is_single() ) { echo ' itemprop="description"'; } ?>><?php bloginfo( 'description' ); ?></div>
 </div>
-<nav id="menu" role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
-<?php wp_nav_menu( array( 'theme_location' => 'main-menu', 'link_before' => '<span itemprop="name">', 'link_after' => '</span>' ) ); ?>
-<div id="search"><?php get_search_form(); ?></div>
-</nav>
+
+
 </header>
 <div id="container">
 <main id="content" role="main">
+			<a href="http://nathalie-mota.local/" aria-label="Page d'accueil de Nathalie Mota">
+				<img src="/Logo.png" alt="Logo Nathalie Mota">
+			</a>
+			

@@ -164,3 +164,7 @@ return count( $comments_by_type['comment'] );
 return $count;
 }
 }
+
+register_nav_menus( array(
+    'top-menu' => __( 'Top Menu', 'mytheme' ),
+  ));
