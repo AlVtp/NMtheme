@@ -16,13 +16,7 @@
                 alt="Logo">        
             </a>
             <?php
-            wp_nav_menu(
-                array(
-                    'theme_location' => 'Menu',
-                    'menu_id' => 'Menu',
-                )
-            );
+            wp_nav_menu( array('theme_location'=> 'headerm') );
             ?>
         </nav>
     </header>
-</body>

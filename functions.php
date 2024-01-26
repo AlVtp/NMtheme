@@ -8,4 +8,11 @@ function theme_enqueue_styles() {
     wp_enqueue_style('custom-style', get_template_directory_uri() . '/style.css', array(), '1.0');
 }
 add_action('wp_enqueue_scripts', 'theme_enqueue_styles');
+
+// Déclaration du menu header
+register_nav_menu('headerm', 'Menu Principal');
+
+// Déclaration du menu footer
+register_nav_menu('footerm', 'Menu Footer');
+
 ?>

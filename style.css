@@ -226,49 +226,8 @@ body {
   justify-content: space-evenly;
 }
 
-.navbar {
-  background-color: white;
-}
-
-.navbar .logo {
-  color: red;
-  text-transform: uppercase;
-}
-
 .logo {
   width: 50%;
-}
-
-.navbar .menu {
-  display: flex;
-  gap: 20px;
-}
-
-.navbar .menu a {
-  color: black;
-  text-decoration: none;
-  text-transform: uppercase;
-}
-
-.menu ul {
-  display: flex;
-  flex-direction: row;
-}
-
-#Menu.menu {
-  width: 28%;
-}
-#Menu.menu ul {
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-}
-
-#Menu a {
-  text-decoration: none;
-  font-size: 20px;
-  color: black;
-  text-transform: uppercase;
 }
 
 #nav {
@@ -277,4 +236,14 @@ body {
   align-items: center;
   width: 80%;
   justify-content: space-between;
+}
+
+#menu-headerm {
+  display: flex;
+  flex-direction: row;
+}
+#menu-headerm a {
+  color: black;
+  text-decoration: none;
+  text-transform: uppercase;
 }/*# sourceMappingURL=style.css.map */

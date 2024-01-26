@@ -38,49 +38,40 @@ body {
     justify-content:space-evenly;
 }
 
-.navbar {
-    background-color: white;
-}
-
-.navbar .logo {
-    color: red;
-    text-transform: uppercase;
-}
-
 .logo {
     width: 50%;
 }
 
-.navbar .menu {
-    display: flex;
-    gap: 20px;
-}
+// .navbar .menu {
+//     display: flex;
+//     gap: 20px;
+// }
 
-.navbar .menu a {
-    color: black;
-    text-decoration: none;
-    text-transform: uppercase;
-}
+// .navbar .menu-headerm-container a {
+//     color: black;
+//     text-decoration: none;
+//     text-transform: uppercase;
+// }
 
-.menu ul {
-    display: flex;
-    flex-direction: row;
-}
-#Menu.menu {
-    width: 28%;
-                ul {
-                width: 100%;
-                display: flex;
-                justify-content: space-around;
-                    }
-}
+// .menu ul {
+//     display: flex;
+//     flex-direction: row;
+// }
+// #menu-headerm.menu {
+//     width: 28%;
+//                 ul {
+//                 width: 100%;
+//                 display: flex;
+//                 justify-content: space-around;
+//                     }
+// }
 
-#Menu a {
-    text-decoration: none;
-    font-size: 20px;
-    color: black;
-    text-transform: uppercase;
-}
+// #headerm a {
+//     text-decoration: none;
+//     font-size: 20px;
+//     color: black;
+//     text-transform: uppercase;
+// }
 
 #nav {
     display: flex;
@@ -88,4 +79,14 @@ body {
     align-items: center;
     width: 80%;
     justify-content: space-between;
+}
+
+#menu-headerm {
+    display: flex;
+    flex-direction: row;
+    a {
+        color: black;
+        text-decoration: none;
+        text-transform: uppercase;
+    }
 }
