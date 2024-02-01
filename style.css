@@ -337,7 +337,7 @@ body {
 }
 
 .logo {
-  width: 50%;
+  width: 250px;
 }
 
 #nav {
@@ -345,6 +345,7 @@ body {
   flex-direction: row;
   align-items: center;
   width: 80%;
+  max-width: 1200px;
   justify-content: space-between;
 }
 
