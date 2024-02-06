@@ -361,6 +361,29 @@ body {
   text-transform: uppercase;
 }
 
+.photoHero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.photoHero img {
+  width: 100%;
+  height: 700px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.photoHero h2 {
+  position: absolute;
+  max-width: 90%;
+  font-size: 6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 5rem;
+  -webkit-text-stroke: 3px white;
+  -webkit-text-fill-color: transparent;
+}
+
 .menu-headerm-container,
 .menu-footerm-container {
   width: 28%;
