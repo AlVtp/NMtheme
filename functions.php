@@ -19,7 +19,7 @@ function theme_enqueue_script() {
     // Enregistrement de la feuille de style principale (style.css)
     wp_enqueue_style('style', get_stylesheet_uri());
 
-    // Ajout du style 
+    // Ajout du js modale 
     wp_enqueue_script('NM-modale', get_template_directory_uri() . '/assets/js/modale.js', array(), '1.0');
 }
 add_action('wp_enqueue_scripts', 'theme_enqueue_script');

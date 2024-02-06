@@ -3,7 +3,9 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width-device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <?php wp_head(); ?>
 </head>
 
@@ -18,8 +20,6 @@
             <?php
             wp_nav_menu( array('theme_location'=> 'headerm') );
             ?>
-            <!-- Trigger/Open The Modal -->
-<button id="myBtn">Open Modal</button>
 
         </nav>
     </header>

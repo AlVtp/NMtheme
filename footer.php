@@ -5,7 +5,16 @@
 
     <?php wp_footer(); ?>
 
-<?php include "modale.php"; ?>
+    <?php include "modale.php"; ?>
+
+    <script type="text/javascript">
+        jQuery(document).ready(function($) {
+            $('.open-modal').on('click', function(e) {
+                e.preventDefault();
+                $('#myModal').modal('show');
+            });
+        });
+    </script>
 </footer>
 </body>
 
