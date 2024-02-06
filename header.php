@@ -18,5 +18,8 @@
             <?php
             wp_nav_menu( array('theme_location'=> 'headerm') );
             ?>
+            <!-- Trigger/Open The Modal -->
+<button id="myBtn">Open Modal</button>
+
         </nav>
     </header>

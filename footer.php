@@ -5,6 +5,7 @@
 
     <?php wp_footer(); ?>
 
+<?php include "modale.php"; ?>
 </footer>
 </body>
 
