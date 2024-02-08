@@ -23,4 +23,11 @@ function theme_enqueue_script() {
     wp_enqueue_script('NM-modale', get_template_directory_uri() . '/assets/js/modale.js', array(), '1.0');
 }
 add_action('wp_enqueue_scripts', 'theme_enqueue_script');
+
+// ajout de taille custom pour les images de la gallerie de la page accueil
+function custom_image_sizes() {
+    add_image_size('custom-size', 495, 564, false); 
+}
+add_action('after_setup_theme', 'custom_image_sizes');
+
 ?>
