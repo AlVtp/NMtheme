@@ -22,11 +22,3 @@
             ?>
         </nav>      
     </header>
-
-    <div class="hero-banner">
-        <div class="photoHero">
-        <img src="/wp-content/themes/NMtheme/assets/images/header.webp" alt='photo hero'>
-
-            <h2>PHOTOGRAPHE EVENT</h2>
-        </div>
-    </div>

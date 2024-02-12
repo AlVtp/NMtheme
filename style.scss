@@ -368,6 +368,12 @@ body {
     cursor: pointer;
   }
 
+/* style commun pour le contenu de toute les pages */
+.style-pages {
+    margin-left: 5%; 
+    margin-right: 5%; 
+}
+
 // style pour hero header
 .photoHero {
     display: flex;
@@ -486,4 +492,30 @@ footer {
 .photos > * {
     flex-basis: 564px;
     box-sizing: border-box;
+}
+
+/* single photo */
+
+.content-container {
+    display: flex;
+    gap: 10px;
+}
+
+.text-content {
+    flex: 1 0 50%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 20px;
+    border-bottom: 1.5px solid black;
+}
+
+.image-content {
+    flex: 1 0 50%;
+    box-sizing: border-box;
+}
+
+.section-contact {
+    height: 80px;
 }
