@@ -410,7 +410,7 @@ body {
   display: flex;
   justify-content: center;
   height: 40px;
-  border-top: 2px solid black;
+  border-top: 1.5px solid black;
   padding-top: 6px;
 }
 
@@ -503,15 +503,93 @@ footer {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding-bottom: 20px;
+  padding-bottom: 40px;
   border-bottom: 1.5px solid black;
+  gap: 22px;
+}
+
+.title-class {
+  font-size: 74px;
+  text-transform: uppercase;
+  font-style: italic;
+}
+
+.reference-class,
+.category-class,
+.format-class,
+.type-class,
+.date-class {
+  font-size: 18px;
+  text-transform: uppercase;
+}
+.reference-class a,
+.category-class a,
+.format-class a,
+.type-class a,
+.date-class a {
+  text-decoration: none;
+  color: inherit;
 }
 
 .image-content {
   flex: 1 0 50%;
   box-sizing: border-box;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
-.section-contact {
-  height: 80px;
+.section-contact-carrousel {
+  height: 118px;
+  border-bottom: 1.5px solid black;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+}
+.section-contact-carrousel p {
+  text-align: center;
+}
+
+.section-gauche {
+  display: flex;
+  flex: 1 0 50%;
+  box-sizing: border-box;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+}
+.section-gauche p {
+  text-align: center;
+}
+.section-gauche button {
+  background-color: #D8D8D8;
+  color: black;
+  width: 272px;
+  height: 50px;
+  border-radius: 2px;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 13px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.section-droite {
+  flex: 1 0 50%;
+  box-sizing: border-box;
+}
+
+.text-sup {
+  height: 160px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+}
+.text-sup p {
+  text-align: center;
 }/*# sourceMappingURL=style.css.map */
