@@ -592,4 +592,10 @@ footer {
 }
 .text-sup p {
   text-align: center;
+}
+
+.photos-sup {
+  width: 500px;
+  display: flex;
+  flex-direction: row;
 }/*# sourceMappingURL=style.css.map */

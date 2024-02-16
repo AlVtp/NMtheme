@@ -40,18 +40,41 @@
         </div>
 
         <div class="section-droite">
-        <p>carrousel</p>
+            <p>carrousel</p>
         </div>
     </div>
 
     <div class="photos-related">
         <h3 class="text-sup">
             <p>VOUS AIMEREZ AUSSI</p>
-            <div class="photos-sup">
         </h3>
+        <div class="photos-sup">
+        <?php
+    // The Query
+    $args = array(
+        'post_type' => 'photo', 
+        'posts_per_page' => 2, 
+        'orderby' => 'categorie' 
+    );
 
+    $related_photo_query = new WP_Query($args);
+
+    // The Loop
+    if ($related_photo_query->have_posts()) {
+        while ($related_photo_query->have_posts()) {
+            $related_photo_query->the_post();
+            $image_url = get_the_post_thumbnail_url();
+    ?>
+        <img src="<?php echo esc_url($image_url); ?>" alt='photos related'>
+    <?php
+        }
+    } 
+
+    wp_reset_postdata();
+    ?>
+
+        </div>
     </div>
-</div>
 
 
-<?php get_footer(); ?>
+    <?php get_footer(); ?>
