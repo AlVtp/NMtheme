@@ -424,32 +424,46 @@ footer {
 
 /* The Modal (background) */
 .modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
   left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0, 0, 0); /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0);
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.9);
+  /* Black w/ opacity */
 }
 
 /* Modal Content/Box */
 .modal-content {
   background-color: #fefefe;
-  margin: 10% auto; /* 15% from the top and centered */
+  margin: 10% auto;
+  /* 15% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
-  height: 70vh; /* Or whatever height you want */
-  width: 25vw; /* Could be more or less, depending on screen size */
-  overflow: hidden; /* This hides the parts of the image that exceed the boundaries */
+  height: 70vh;
+  /* Or whatever height you want */
+  width: 25vw;
+  /* Could be more or less, depending on screen size */
+  overflow: hidden;
+  /* This hides the parts of the image that exceed the boundaries */
 }
 
 .modalHeader {
-  width: auto; /* This makes the image take up the full width of the container */
-  height: auto; /* This maintains the aspect ratio of the image */
+  width: auto;
+  /* This makes the image take up the full width of the container */
+  height: auto;
+  /* This maintains the aspect ratio of the image */
   padding-bottom: 5%;
 }
 .modalHeader img {
@@ -582,6 +596,18 @@ footer {
 .section-droite {
   flex: 1 0 50%;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.section-droite .fleches {
+  display: flex;
+  align-items: center;
+}
+
+#fleche-gauche,
+#fleche-droite {
+  text-decoration: none;
 }
 
 .text-sup {

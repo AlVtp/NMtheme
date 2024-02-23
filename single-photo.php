@@ -22,8 +22,7 @@
                 echo '</div>';
                 echo '<div class="date-class">Année : ' . get_the_date('Y') . '</div>';
             }
-            echo "<pre>";
-            print_r(get_the_terms(get_the_ID(), 'categorie'));
+            
             /* Restore original Post Data */
             wp_reset_postdata();
             ?>
@@ -41,7 +40,15 @@
         </div>
 
         <div class="section-droite">
-            <p>carrousel</p>
+            <?php the_post_thumbnail(array(75, 75)); ?>
+            <div class="fleches">
+                <p id="fleche-gauche" class="fleche-gauche">
+                    <?php previous_post_link('%link', '<-'); ?>
+        </p>
+                <p id="fleche-droite" class="fleche-droite">
+                    <?php next_post_link('%link', '->'); ?>
+        </p>
+            </div>
         </div>
     </div>
 
@@ -55,7 +62,7 @@
             $args = array(
                 'post_type' => 'photo',
                 'posts_per_page' => 2,
-                'orderby' => 'categorie'
+                'orderby' => 'date',
             );
 
             $related_photo_query = new WP_Query($args);
@@ -64,7 +71,7 @@
             if ($related_photo_query->have_posts()) {
                 while ($related_photo_query->have_posts()) {
                     $related_photo_query->the_post();
-                    $image_url = get_the_post_thumbnail_url();
+                    $image_url = get_the_post_thumbnail_url(null, 'medium');
             ?>
                     <img src="<?php echo esc_url($image_url); ?>" alt='photos related'>
             <?php
