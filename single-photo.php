@@ -22,7 +22,8 @@
                 echo '</div>';
                 echo '<div class="date-class">Année : ' . get_the_date('Y') . '</div>';
             }
-
+echo "<pre>";
+ print_r(get_the_terms(get_the_ID(), 'categorie'));
             /* Restore original Post Data */
             wp_reset_postdata();
             ?>
