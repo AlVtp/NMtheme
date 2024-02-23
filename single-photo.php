@@ -8,7 +8,7 @@
             while (have_posts()) {
                 the_post();
                 echo '<h2 class="title-class">' . get_the_title() . '</h2>';
-                echo '<div class="reference-class">Référence : ';
+                echo '<div id="reference" class="reference-class">Référence : ';
                 the_field('reference');
                 echo '</div>';
                 echo '<div class="category-class">Catégorie : ';
@@ -22,8 +22,8 @@
                 echo '</div>';
                 echo '<div class="date-class">Année : ' . get_the_date('Y') . '</div>';
             }
-echo "<pre>";
- print_r(get_the_terms(get_the_ID(), 'categorie'));
+            echo "<pre>";
+            print_r(get_the_terms(get_the_ID(), 'categorie'));
             /* Restore original Post Data */
             wp_reset_postdata();
             ?>
@@ -50,29 +50,29 @@ echo "<pre>";
             <p>VOUS AIMEREZ AUSSI</p>
         </h3>
         <div class="photos-sup">
-        <?php
-    // The Query
-    $args = array(
-        'post_type' => 'photo', 
-        'posts_per_page' => 2, 
-        'orderby' => 'categorie' 
-    );
+            <?php
+            // The Query
+            $args = array(
+                'post_type' => 'photo',
+                'posts_per_page' => 2,
+                'orderby' => 'categorie'
+            );
 
-    $related_photo_query = new WP_Query($args);
+            $related_photo_query = new WP_Query($args);
 
-    // The Loop
-    if ($related_photo_query->have_posts()) {
-        while ($related_photo_query->have_posts()) {
-            $related_photo_query->the_post();
-            $image_url = get_the_post_thumbnail_url();
-    ?>
-        <img src="<?php echo esc_url($image_url); ?>" alt='photos related'>
-    <?php
-        }
-    } 
+            // The Loop
+            if ($related_photo_query->have_posts()) {
+                while ($related_photo_query->have_posts()) {
+                    $related_photo_query->the_post();
+                    $image_url = get_the_post_thumbnail_url();
+            ?>
+                    <img src="<?php echo esc_url($image_url); ?>" alt='photos related'>
+            <?php
+                }
+            }
 
-    wp_reset_postdata();
-    ?>
+            wp_reset_postdata();
+            ?>
 
         </div>
     </div>

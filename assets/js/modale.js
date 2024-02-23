@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function(event) {
+document.addEventListener("DOMContentLoaded", function (event) {
 
   // Get the modal
   var modal = document.getElementById("myModal");
@@ -19,14 +19,21 @@ document.addEventListener("DOMContentLoaded", function(event) {
   btn2.addEventListener('click', openModal);
 
   // When the user clicks on <span> (x), close the modal
-  span.onclick = function() {
+  span.onclick = function () {
     modal.style.display = "none";
   }
 
   // When the user clicks anywhere outside of the modal, close it
-  window.onclick = function(event) {
+  window.onclick = function (event) {
     if (event.target == modal) {
       modal.style.display = "none";
     }
   }
+
+  // Add jQuery code here
+  $('#contact-btn').click(function () {
+    var reference = $('#reference').text().replace('Référence : ', '');
+    $('#modal-reference').val(reference);
+  });
+
 });
