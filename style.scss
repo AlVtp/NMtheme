@@ -640,3 +640,25 @@ footer {
     padding-bottom: 60px;
     gap: 7%;
 }
+
+.filters {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    gap: 10px;
+    padding-top: 60px;
+    padding-bottom: 40px;
+    
+    select {
+        font-size: 12px;
+        width: 260px;
+        height: 40px;
+        border-radius: 6px;
+    }
+}
+
+#photos-container img {
+    width: 560px;
+    height: 460px;
+    object-fit: cover;
+}

@@ -33,5 +33,60 @@ add_action('wp_enqueue_scripts', 'theme_enqueue_script');
 function custom_image_sizes()
 {
     add_image_size('custom-size', 495, 564, false);
+    add_image_size('filtered-photo', 800, 800, true);
+    add_image_size('photo-grid', 560, 560, true); 
 }
 add_action('after_setup_theme', 'custom_image_sizes');
+
+
+
+add_action('wp_ajax_filter_photos', 'filter_photos');
+add_action('wp_ajax_nopriv_filter_photos', 'filter_photos');
+
+function filter_photos() {
+    $category = $_POST['category'];
+    $format = $_POST['format'];
+    $orderby = $_POST['orderby'];
+
+    // Build the WP_Query args
+    $args = [
+        'post_type' => 'photo',
+        'posts_per_page' => -1,
+        'orderby' => $orderby
+    ];
+
+    // Add taxonomy query if category is set
+    if (!empty($category)) {
+        $args['tax_query'][] = [
+            'taxonomy' => 'categorie',
+            'field' => 'slug',
+            'terms' => $category
+        ];
+    }
+
+    // Add taxonomy query if format is set
+    if (!empty($format)) {
+        $args['tax_query'][] = [
+            'taxonomy' => 'format',
+            'field' => 'slug',
+            'terms' => $format
+        ];
+    }
+
+    $query = new WP_Query($args);
+
+    if ($query->have_posts()) {
+        while ($query->have_posts()) {
+            $query->the_post();
+            // Display the photo directly
+            if (has_post_thumbnail()) {
+                the_post_thumbnail('medium');
+            }
+        }
+    } else {
+        echo 'No photos found.';
+    }
+
+    wp_die();
+}
+?>

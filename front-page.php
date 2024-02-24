@@ -32,41 +32,74 @@
         </div>
     </div>
 
-    <div class="style-pages">
+    <?php
+// Get all terms of the 'categorie' taxonomy
+$categories = get_terms(['taxonomy' => 'categorie']);
 
-<?php
-// The Query
-$args = array(
-    'post_type' => 'photo', //  type de publication personnalisé
-    'posts_per_page' => -8, // affiche toutes les publications personnalisées
-);
+// Get all terms of the 'format' taxonomy
+$formats = get_terms(['taxonomy' => 'format']);
 
-$projets_query = new WP_Query($args);
-
-// The Loop
-if ($projets_query->have_posts()) {
-    while ($projets_query->have_posts()) {
-        $projets_query->the_post();
+// Get all orderby options
+$orderby_options = ['none', 'ID', 'author', 'title', 'name', 'type', 'date', 'modified', 'rand'];
 ?>
 
-        <div class="photos">
-            <?php 
-            $media = get_attached_media('image');
-            foreach($media as $image) {
-                echo wp_get_attachment_image($image->ID, 'custom-size');
+<div class="filters">
+
+<select id="category-filter">
+    <option value="">CATÉGORIES</option>
+    <?php foreach ($categories as $category) : ?>
+        <option value="<?php echo $category->slug; ?>"><?php echo $category->name; ?></option>
+    <?php endforeach; ?>
+</select>
+
+<select id="format-filter">
+    <option value="">FORMATS</option>
+    <?php foreach ($formats as $format) : ?>
+        <option value="<?php echo $format->slug; ?>"><?php echo $format->name; ?></option>
+    <?php endforeach; ?>
+</select>
+
+<select id="orderby-filter">
+    <option value="">TRIER PAR</option>
+    <?php foreach ($orderby_options as $option) : ?>
+        <option value="<?php echo $option; ?>"><?php echo ucfirst($option); ?></option>
+    <?php endforeach; ?>
+</select>
+</div>
+
+<div id="photos-container">
+    <!-- Photos will be loaded here -->
+</div>
+
+<script>
+jQuery(document).ready(function($) {
+    function loadPhotos() {
+        var category = $('#category-filter').val();
+        var format = $('#format-filter').val();
+        var orderby = $('#orderby-filter').val();
+
+        $.ajax({
+            url: '<?php echo admin_url('admin-ajax.php'); ?>',
+            data: {
+                action: 'filter_photos',
+                category: category,
+                format: format,
+                orderby: orderby
+            },
+            type: 'POST',
+            success: function(data) {
+                $('#photos-container').html(data);
             }
-            ?>
-        </div>
-
-<?php
+        });
     }
-} else {
 
-    echo 'Aucune photo trouvée.';
-}
+    $('#category-filter, #format-filter, #orderby-filter').change(loadPhotos);
 
-wp_reset_postdata();
-?>
+    // Load photos on page load
+    loadPhotos();
+});
+</script>
+    
 
 </div>
 
