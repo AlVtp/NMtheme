@@ -609,16 +609,14 @@ footer {
     .fleches {
         display: flex;
         align-items: center;
-
-
+        justify-content: center;
+        gap: 8px;
     }
 }
 
 #fleche-gauche,
 #fleche-droite {
-
     text-decoration: none;
-
 }
 
 
@@ -634,7 +632,11 @@ footer {
 }
 
 .photos-sup {
-    width: 500px;
+    width: 90%;
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    object-fit: contain;
+    padding-bottom: 60px;
+    gap: 7%;
 }

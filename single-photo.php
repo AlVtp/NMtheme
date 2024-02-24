@@ -22,7 +22,7 @@
                 echo '</div>';
                 echo '<div class="date-class">Année : ' . get_the_date('Y') . '</div>';
             }
-            
+
             /* Restore original Post Data */
             wp_reset_postdata();
             ?>
@@ -40,16 +40,21 @@
         </div>
 
         <div class="section-droite">
-            <?php the_post_thumbnail(array(75, 75)); ?>
-            <div class="fleches">
-                <p id="fleche-gauche" class="fleche-gauche">
-                    <?php previous_post_link('%link', '<-'); ?>
-        </p>
-                <p id="fleche-droite" class="fleche-droite">
-                    <?php next_post_link('%link', '->'); ?>
-        </p>
-            </div>
-        </div>
+    <?php
+    $next_post = get_next_post();
+    if (!empty($next_post)) {
+        echo get_the_post_thumbnail($next_post->ID, array(75, 75));
+    }
+    ?>
+    <div class="fleches">
+        <?php 
+        $prev_link = '<img id="fleche-gauche" class="fleche-gauche" src="' . get_template_directory_uri() . '/assets/images/fleche-gauche.png" alt="image précédente">';
+        $next_link = '<img id="fleche-droite" class="fleche-droite" src="' . get_template_directory_uri() . '/assets/images/fleche-droite.png" alt="image suivante">';
+        previous_post_link('%link', $prev_link);
+        next_post_link('%link', $next_link);
+        ?>
+    </div>
+</div>
     </div>
 
     <div class="photos-related">
@@ -57,31 +62,41 @@
             <p>VOUS AIMEREZ AUSSI</p>
         </h3>
         <div class="photos-sup">
-            <?php
-            // The Query
-            $args = array(
-                'post_type' => 'photo',
-                'posts_per_page' => 2,
-                'orderby' => 'date',
-            );
+    <?php
+    // Get the current post's categories
+    $categories = wp_get_post_terms(get_the_ID(), 'categorie', array('fields' => 'ids'));
 
-            $related_photo_query = new WP_Query($args);
+    // The Query
+    $args = array(
+        'post_type' => 'photo',
+        'posts_per_page' => 2,
+        'orderby' => 'rand',
+        'post__not_in' => array(get_the_ID()),
+        'tax_query' => array(
+            array(
+                'taxonomy' => 'categorie',
+                'field'    => 'term_id',
+                'terms'    => $categories,
+            ),
+        ),
+    );
 
-            // The Loop
-            if ($related_photo_query->have_posts()) {
-                while ($related_photo_query->have_posts()) {
-                    $related_photo_query->the_post();
-                    $image_url = get_the_post_thumbnail_url(null, 'medium');
-            ?>
-                    <img src="<?php echo esc_url($image_url); ?>" alt='photos related'>
-            <?php
-                }
-            }
+    $related_photo_query = new WP_Query($args);
 
-            wp_reset_postdata();
-            ?>
+    // The Loop
+    if ($related_photo_query->have_posts()) {
+        while ($related_photo_query->have_posts()) {
+            $related_photo_query->the_post();
+            $image_url = get_the_post_thumbnail_url(null, 'large');
+    ?>
+            <img src="<?php echo esc_url($image_url); ?>" alt='photos related'>
+    <?php
+        }
+    }
 
-        </div>
+    wp_reset_postdata();
+    ?>
+</div>
     </div>
 
 
