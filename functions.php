@@ -47,11 +47,15 @@ function filter_photos() {
     $category = $_POST['category'];
     $format = $_POST['format'];
     $orderby = $_POST['orderby'];
+    $page = isset($_POST['page']) ? intval($_POST['page']) : 1; // get the page number from the AJAX request
+    $posts_per_page = 9; // number of photos per page
+    $offset = ($page - 1) * $posts_per_page; // calculate the offset
 
     // Build the WP_Query args
     $args = [
         'post_type' => 'photo',
-        'posts_per_page' => -1,
+        'posts_per_page' => $posts_per_page,
+        'offset' => $offset,
         'orderby' => $orderby
     ];
 
@@ -80,7 +84,9 @@ function filter_photos() {
             $query->the_post();
             // Display the photo directly
             if (has_post_thumbnail()) {
+                echo '<div class="image-container">';
                 the_post_thumbnail('medium');
+                echo '</div>';
             }
         }
     } else {

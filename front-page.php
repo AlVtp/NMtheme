@@ -40,7 +40,7 @@ $categories = get_terms(['taxonomy' => 'categorie']);
 $formats = get_terms(['taxonomy' => 'format']);
 
 // Get all orderby options
-$orderby_options = ['none', 'ID', 'author', 'title', 'name', 'type', 'date', 'modified', 'rand'];
+$orderby_options = ['ID', 'author', 'title', 'name', 'type', 'date', 'modified', 'rand'];
 ?>
 
 <div class="filters">
@@ -70,8 +70,13 @@ $orderby_options = ['none', 'ID', 'author', 'title', 'name', 'type', 'date', 'mo
 <div id="photos-container">
     <!-- Photos will be loaded here -->
 </div>
+<div class="buton-container">
+<button id="load-more">Charger plus</button>
+</div>
 
 <script>
+var page = 1; // keep track of the current page
+
 jQuery(document).ready(function($) {
     function loadPhotos() {
         var category = $('#category-filter').val();
@@ -84,16 +89,26 @@ jQuery(document).ready(function($) {
                 action: 'filter_photos',
                 category: category,
                 format: format,
-                orderby: orderby
+                orderby: orderby,
+                page: page // add the current page to the AJAX request
             },
             type: 'POST',
             success: function(data) {
-                $('#photos-container').html(data);
+                $('#photos-container').append(data); // append the new photos to the container
             }
         });
     }
 
-    $('#category-filter, #format-filter, #orderby-filter').change(loadPhotos);
+    $('#category-filter, #format-filter, #orderby-filter').change(function() {
+        page = 1; // reset the page number
+        $('#photos-container').empty(); // clear the photo container
+        loadPhotos();
+    });
+
+    $('#load-more').click(function() {
+        page++; // increment the page number
+        loadPhotos();
+    });
 
     // Load photos on page load
     loadPhotos();
