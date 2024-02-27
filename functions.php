@@ -34,7 +34,7 @@ function custom_image_sizes()
 {
     add_image_size('custom-size', 495, 564, false);
     add_image_size('filtered-photo', 800, 800, true);
-    add_image_size('photo-grid', 560, 560, true); 
+    add_image_size('photo-grid', 560, 560, true);
 }
 add_action('after_setup_theme', 'custom_image_sizes');
 
@@ -43,15 +43,15 @@ add_action('after_setup_theme', 'custom_image_sizes');
 add_action('wp_ajax_filter_photos', 'filter_photos');
 add_action('wp_ajax_nopriv_filter_photos', 'filter_photos');
 
-function filter_photos() {
+function filter_photos()
+{
     $category = $_POST['category'];
     $format = $_POST['format'];
     $orderby = $_POST['orderby'];
-    $page = isset($_POST['page']) ? intval($_POST['page']) : 1; // get the page number from the AJAX request
-    $posts_per_page = 9; // number of photos per page
-    $offset = ($page - 1) * $posts_per_page; // calculate the offset
+    $page = isset($_POST['page']) ? intval($_POST['page']) : 1; // recuperation du nombre de page par la requéte AJAX
+    $posts_per_page = 9; // nombre de photos par page
+    $offset = ($page - 1) * $posts_per_page; // calcul de l'offset
 
-    // Build the WP_Query args
     $args = [
         'post_type' => 'photo',
         'posts_per_page' => $posts_per_page,
@@ -59,7 +59,7 @@ function filter_photos() {
         'orderby' => $orderby
     ];
 
-    // Add taxonomy query if category is set
+    // ajout de la taxonomie categorie
     if (!empty($category)) {
         $args['tax_query'][] = [
             'taxonomy' => 'categorie',
@@ -68,7 +68,7 @@ function filter_photos() {
         ];
     }
 
-    // Add taxonomy query if format is set
+    // ajout de la taxonomie format
     if (!empty($format)) {
         $args['tax_query'][] = [
             'taxonomy' => 'format',
@@ -82,7 +82,7 @@ function filter_photos() {
     if ($query->have_posts()) {
         while ($query->have_posts()) {
             $query->the_post();
-            // Display the photo directly
+            // affichage de la photo
             if (has_post_thumbnail()) {
                 echo '<div class="image-container">';
                 the_post_thumbnail('medium');
@@ -95,4 +95,3 @@ function filter_photos() {
 
     wp_die();
 }
-?>

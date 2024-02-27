@@ -632,13 +632,18 @@ footer {
 }
 
 .photos-sup {
-    width: 90%;
+    width: 85vw;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     object-fit: contain;
-    padding-bottom: 60px;
+    padding-bottom: 100px;
     gap: 7%;
+}
+
+.photos-sup img {
+    width: 40vw;
+    height: 35vw;
 }
 
 .filters {
@@ -648,7 +653,7 @@ footer {
     gap: 10px;
     padding-top: 60px;
     padding-bottom: 40px;
-    
+
     select {
         font-size: 12px;
         width: 260px;
@@ -661,12 +666,12 @@ footer {
     width: 40vw;
     height: 40vw;
     object-fit: cover;
-    display: flex;  
+    display: flex;
     justify-content: center;
 }
 
-#photos-container  {
-    display: flex;  
+#photos-container {
+    display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 16px;
