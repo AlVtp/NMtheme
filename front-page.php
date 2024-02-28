@@ -40,7 +40,7 @@ $categories = get_terms(['taxonomy' => 'categorie']);
 $formats = get_terms(['taxonomy' => 'format']);
 
 // Get all orderby options
-$orderby_options = ['ID', 'author', 'title', 'name', 'type', 'date', 'modified', 'rand'];
+$orderby_options = ['date : à partir des plus récentes', 'date : à partir des plus anciennes'];
 ?>
 
 <div class="filters">
@@ -67,7 +67,7 @@ $orderby_options = ['ID', 'author', 'title', 'name', 'type', 'date', 'modified',
 </select>
 </div>
 
-<div id="photos-container">
+<div class="photos-container">
     <!-- Photos will be loaded here -->
 </div>
 <div class="buton-container">
@@ -94,14 +94,14 @@ jQuery(document).ready(function($) {
             },
             type: 'POST',
             success: function(data) {
-                $('#photos-container').append(data); // append the new photos to the container
+                $('.photos-container').append(data); // append the new photos to the container
             }
         });
     }
 
     $('#category-filter, #format-filter, #orderby-filter').change(function() {
         page = 1; // reset the page number
-        $('#photos-container').empty(); // clear the photo container
+        $('.photos-container').empty(); // clear the photo container
         loadPhotos();
     });
 

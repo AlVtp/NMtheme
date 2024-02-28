@@ -43,23 +43,34 @@ add_action('after_setup_theme', 'custom_image_sizes');
 add_action('wp_ajax_filter_photos', 'filter_photos');
 add_action('wp_ajax_nopriv_filter_photos', 'filter_photos');
 
-function filter_photos()
-{
+function filter_photos() {
     $category = $_POST['category'];
     $format = $_POST['format'];
     $orderby = $_POST['orderby'];
-    $page = isset($_POST['page']) ? intval($_POST['page']) : 1; // recuperation du nombre de page par la requéte AJAX
-    $posts_per_page = 9; // nombre de photos par page
-    $offset = ($page - 1) * $posts_per_page; // calcul de l'offset
+    $order = 'DESC'; // default order
 
+    if ($orderby === 'date : à partir des plus anciennes') {
+        $orderby = 'date';
+        $order = 'ASC';
+    } elseif ($orderby === 'date : à partir des plus récentes') {
+        $orderby = 'date';
+        $order = 'DESC';
+    }
+
+    $page = isset($_POST['page']) ? intval($_POST['page']) : 1; // get the page number from the AJAX request
+    $posts_per_page = 8; // number of photos per page
+    $offset = ($page - 1) * $posts_per_page; // calculate the offset
+
+    // Build the WP_Query args
     $args = [
         'post_type' => 'photo',
         'posts_per_page' => $posts_per_page,
         'offset' => $offset,
-        'orderby' => $orderby
+        'orderby' => $orderby,
+        'order' => $order
     ];
 
-    // ajout de la taxonomie categorie
+    // Add taxonomy query if category is set
     if (!empty($category)) {
         $args['tax_query'][] = [
             'taxonomy' => 'categorie',
@@ -68,7 +79,7 @@ function filter_photos()
         ];
     }
 
-    // ajout de la taxonomie format
+    // Add taxonomy query if format is set
     if (!empty($format)) {
         $args['tax_query'][] = [
             'taxonomy' => 'format',
@@ -79,19 +90,30 @@ function filter_photos()
 
     $query = new WP_Query($args);
 
-    if ($query->have_posts()) {
-        while ($query->have_posts()) {
-            $query->the_post();
-            // affichage de la photo
-            if (has_post_thumbnail()) {
-                echo '<div class="image-container">';
-                the_post_thumbnail('medium');
-                echo '</div>';
-            }
+if ($query->have_posts()) {
+    while ($query->have_posts()) {
+        $query->the_post();
+        $post = get_post(); 
+        if (has_post_thumbnail()) {
+            echo '<div class="image-container">';
+            the_post_thumbnail('large');
+            echo '<div class="hover">';
+            echo '<img class="fullscreen-hover" src="' . get_template_directory_uri() . '/assets/images/icone-fullscreen.png" alt="Fullscreen Icon">';
+            echo '<img class="eye-hover" src="' . get_template_directory_uri() . '/assets/images/icone-oeil.png" alt="Eye Icon">';
+            echo '<div class="id">';
+            the_title('<h2>', '</h2>');
+            echo '</div>';
+            echo '<div class="categorie">';
+            echo get_the_term_list($post->ID, 'categorie', '<p>', ', ', '</p>');
+            echo '</div>';
+            echo '</div>'; 
+            echo '</div>'; 
         }
-    } else {
-        echo 'No photos found.';
+    }
+} else {
+        echo '<div class="no-photos">Toutes les images sont chargées sur la page.</div>';
     }
 
     wp_die();
 }
+?>

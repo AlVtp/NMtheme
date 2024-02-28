@@ -87,7 +87,7 @@
     if ($related_photo_query->have_posts()) {
         while ($related_photo_query->have_posts()) {
             $related_photo_query->the_post();
-            $image_url = get_the_post_thumbnail_url(null, 'medium');
+            $image_url = get_the_post_thumbnail_url(null, 'large');
     ?>
             <img src="<?php echo esc_url($image_url); ?>" alt='photos related'>
     <?php

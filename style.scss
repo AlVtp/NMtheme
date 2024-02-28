@@ -511,6 +511,98 @@ footer {
     box-sizing: border-box;
 }
 
+.no-photos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    margin-bottom: 100px;
+}
+
+
+.filters {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    gap: 10px;
+    padding-top: 60px;
+    padding-bottom: 40px;
+
+    select {
+        font-size: 12px;
+        width: 260px;
+        height: 40px;
+        border-radius: 6px;
+    }
+}
+
+.photos-container img {
+    width: 40vw;
+    height: 40vw;
+    object-fit: cover;
+    display: flex;
+    justify-content: center;
+}
+
+.photos-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+}
+
+.photos-container:hover {
+    img{
+    color: rgba(0, 0, 0, 0.9);
+    }
+}
+
+.image-container {
+    position: relative;
+}
+
+.image-container .hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40vw;
+    height: 40vw;
+    display: none;
+}
+
+.image-container:hover .hover {
+    display: block;
+}
+
+.hover {
+    display: flex;
+    width: 40vw;
+    height: 40vw;
+}
+
+.hover img {
+display: flex;
+justify-content: end;
+height: 32px;
+width: 46px;
+}
+
+.buton-container {
+    display: flex;
+    justify-content: center;
+}
+
+#load-more {
+    margin-bottom: 60px;
+    margin-top: 60px;
+    width: 272px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+}
+
 /* single photo */
 
 .content-container {
@@ -636,7 +728,6 @@ footer {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    object-fit: contain;
     padding-bottom: 100px;
     gap: 7%;
 }
@@ -644,51 +735,5 @@ footer {
 .photos-sup img {
     width: 40vw;
     height: 35vw;
-}
-
-.filters {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    gap: 10px;
-    padding-top: 60px;
-    padding-bottom: 40px;
-
-    select {
-        font-size: 12px;
-        width: 260px;
-        height: 40px;
-        border-radius: 6px;
-    }
-}
-
-#photos-container img {
-    width: 40vw;
-    height: 40vw;
     object-fit: cover;
-    display: flex;
-    justify-content: center;
-}
-
-#photos-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 16px;
-}
-
-.buton-container {
-    display: flex;
-    justify-content: center;
-}
-
-#load-more {
-    margin-bottom: 60px;
-    margin-top: 60px;
-    width: 272px;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 12px;
 }
