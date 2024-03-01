@@ -24,6 +24,9 @@ function theme_enqueue_script()
     // Ajout du js modale 
     wp_enqueue_script('NM-modale', get_template_directory_uri() . '/assets/js/modale.js', array(), '1.0');
 
+    // Ajout du js lightbox 
+    wp_enqueue_script('NM-lightbox', get_template_directory_uri() . '/assets/js/lightbox.js', array(), '1.0');
+
     // Ajout de jQuery
     wp_enqueue_script('jquery');
 }
@@ -98,7 +101,7 @@ if ($query->have_posts()) {
             echo '<div class="image-container">';
             the_post_thumbnail('large');
             echo '<div class="hover">';
-            echo '<img class="fullscreen-hover" src="' . get_template_directory_uri() . '/assets/images/icone-fullscreen.png" alt="Fullscreen Icon">';
+            echo '<img id="fullscreen" class="fullscreen-hover" src="' . get_template_directory_uri() . '/assets/images/icone-fullscreen.png" alt="Fullscreen Icon">';
             echo '<img class="eye-hover" src="' . get_template_directory_uri() . '/assets/images/icone-oeil.png" alt="Eye Icon">';
             echo '<div class="id">';
             the_title('<h2>', '</h2>');

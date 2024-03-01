@@ -544,10 +544,6 @@ footer {
   gap: 16px;
 }
 
-.photos-container:hover img {
-  color: rgba(0, 0, 0, 0.9);
-}
-
 .image-container {
   position: relative;
 }
@@ -562,18 +558,23 @@ footer {
 }
 
 .image-container:hover .hover {
-  display: block;
-}
-
-.hover {
   display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   width: 40vw;
   height: 40vw;
 }
+.image-container:hover .hover .fullscreen-hover {
+  width: 56px;
+  height: 56px;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+.image-container:hover .hover .eye-hover {
+  align-items: flex-start;
+}
 
 .hover img {
-  display: flex;
-  justify-content: end;
   height: 32px;
   width: 46px;
 }
