@@ -40,7 +40,7 @@ $categories = get_terms(['taxonomy' => 'categorie']);
 $formats = get_terms(['taxonomy' => 'format']);
 
 // Get all orderby options
-$orderby_options = ['date : à partir des plus récentes', 'date : à partir des plus anciennes'];
+$orderby_options = ['date_desc' => 'date : à partir des plus récentes', 'date_asc' => 'date : à partir des plus anciennes'];
 ?>
 
 <div class="filters">
@@ -61,8 +61,8 @@ $orderby_options = ['date : à partir des plus récentes', 'date : à partir des
 
 <select id="orderby-filter">
     <option value="">TRIER PAR</option>
-    <?php foreach ($orderby_options as $option) : ?>
-        <option value="<?php echo $option; ?>"><?php echo ucfirst($option); ?></option>
+    <?php foreach ($orderby_options as $value => $option) : ?>
+        <option value="<?php echo $value; ?>"><?php echo ucfirst($option); ?></option>
     <?php endforeach; ?>
 </select>
 </div>

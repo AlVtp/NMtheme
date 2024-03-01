@@ -52,10 +52,10 @@ function filter_photos() {
     $orderby = $_POST['orderby'];
     $order = 'DESC'; // default order
 
-    if ($orderby === 'date : à partir des plus anciennes') {
+    if ($orderby === 'date_asc') {
         $orderby = 'date';
         $order = 'ASC';
-    } elseif ($orderby === 'date : à partir des plus récentes') {
+    } elseif ($orderby === 'date_desc') {
         $orderby = 'date';
         $order = 'DESC';
     }
@@ -103,11 +103,13 @@ if ($query->have_posts()) {
             echo '<div class="hover">';
             echo '<img id="fullscreen" class="fullscreen-hover" src="' . get_template_directory_uri() . '/assets/images/icone-fullscreen.png" alt="Fullscreen Icon">';
             echo '<img class="eye-hover" src="' . get_template_directory_uri() . '/assets/images/icone-oeil.png" alt="Eye Icon">';
+            echo '<div class="meta">';
             echo '<div class="id">';
             the_title('<h2>', '</h2>');
             echo '</div>';
             echo '<div class="categorie">';
             echo get_the_term_list($post->ID, 'categorie', '<p>', ', ', '</p>');
+            echo '</div>';
             echo '</div>';
             echo '</div>'; 
             echo '</div>'; 
