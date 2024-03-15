@@ -101,7 +101,7 @@ if ($query->have_posts()) {
             echo '<div class="image-container">';
             the_post_thumbnail('large');
             echo '<div class="hover">';
-            echo '<img id="fullscreen" class="fullscreen-hover" src="' . get_template_directory_uri() . '/assets/images/icone-fullscreen.png" alt="Fullscreen Icon">';
+            echo '<img class="fullscreen fullscreen-hover" src="' . get_template_directory_uri() . '/assets/images/icone-fullscreen.png" alt="Fullscreen Icon">';
             echo '<img class="eye-hover" src="' . get_template_directory_uri() . '/assets/images/icone-oeil.png" alt="Eye Icon">';
             echo '<div class="meta">';
             echo '<div class="id">';
@@ -113,6 +113,7 @@ if ($query->have_posts()) {
             echo '</div>';
             echo '</div>'; 
             echo '</div>'; 
+            
         }
     }
 } else {

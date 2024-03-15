@@ -118,4 +118,6 @@ jQuery(document).ready(function($) {
 
 </div>
 
+<?php include 'lightbox.php'; ?>
+
 <?php get_footer(); ?>

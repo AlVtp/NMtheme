@@ -15,8 +15,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
     modal.style.display = "block";
   }
 
-  btn1.addEventListener('click', openModal);
-  btn2.addEventListener('click', openModal);
+  btn1?.addEventListener('click', openModal);
+  btn2?.addEventListener('click', openModal);
 
   // When the user clicks on <span> (x), close the modal
   span.onclick = function () {

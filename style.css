@@ -568,6 +568,8 @@ footer {
 .image-container:hover .hover .fullscreen-hover {
   width: 56px;
   height: 56px;
+  padding-right: 18px;
+  padding-top: 18px;
   align-self: flex-end;
 }
 .image-container:hover .hover .eye-hover {
